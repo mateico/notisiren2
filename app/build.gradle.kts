@@ -5,12 +5,11 @@ plugins {
 
 android {
     namespace = "com.notisiren"
-    compileSdk {
+    compileSdk { // ???
         version = release(36) {
             minorApiLevel = 1
         }
     }
-
     defaultConfig {
         applicationId = "com.notisiren"
         minSdk = 26
@@ -20,7 +19,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
             isMinifyEnabled = false
