@@ -26,8 +26,8 @@ rootProject.name = "NotiSiren"
 include(":app")
 include(":core")
 include(":ui-components")
+include(":shared")
 // --- temporarily disabled while verifying the build pattern ---
-// include(":shared")
 // include(":feature-main")
 // include(":feature-filters")
 // include(":feature-settings")
