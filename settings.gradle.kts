@@ -27,8 +27,8 @@ include(":app")
 include(":core")
 include(":ui-components")
 include(":shared")
-// --- temporarily disabled while verifying the build pattern ---
-// include(":feature-main")
+include(":feature-main")
+//// --- temporarily disabled while verifying the build pattern ---
 // include(":feature-filters")
 // include(":feature-settings")
 // include(":feature-notifications")

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="main_title">NotiSiren</string>
+    <string name="main_add_filter">Add filter</string>
+    <string name="main_empty">No filters yet. Tap + to create one.</string>
+</resources>
