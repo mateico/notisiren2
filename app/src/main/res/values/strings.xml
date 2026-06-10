@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NotiSiren</string>
+    <string name="notification_listener_title">NotiSiren Notification Access</string>
 </resources>

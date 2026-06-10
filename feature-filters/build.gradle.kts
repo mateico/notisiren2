@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.notisiren.feature.main"
+    namespace = "com.notisiren.feature.filters"
     compileSdk = 36
 
     defaultConfig {
@@ -28,14 +28,12 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":shared"))
     implementation(project(":ui-components"))
-    implementation(project(":feature-notifications"))
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.androidx.compose.ui.tooling.preview)
 
     implementation(libs.kotlinx.coroutines.android)
 }

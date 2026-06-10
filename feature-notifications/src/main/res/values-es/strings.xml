@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+      <string name="notification_listener_disabled_title">NotiSiren necesita acceso a notificaciones para
+  funcionar</string>
+    <string name="notification_listener_enable_button">Habilitar</string>
+</resources>

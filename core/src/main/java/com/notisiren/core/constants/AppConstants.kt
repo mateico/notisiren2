@@ -6,4 +6,5 @@ package com.notisiren.core.constants
 object AppConstants {
     /** Package name of the Gmail app. Used to recognize Gmail notifications. */
     const val GMAIL_PACKAGE_NAME = "com.google.android.gm"
+    const val APP_PACKAGE_NAME = "com.notisiren"
 }

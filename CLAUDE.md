@@ -73,10 +73,18 @@ Toolchain versions live in `gradle/libs.versions.toml` (agp 9.2.1, kotlin 2.2.10
 ksp 2.2.10-2.0.2, hilt 2.59.2, room 2.8.2, composeBom 2026.02.01, etc.).
 
 ## Progress
-**Built green:** `:core`, `:ui-components`, `:shared`, `:feature-main` (each `assembleDebug`
-verified). Old `app/.../ui/theme/` boilerplate deleted (theme now lives in `:ui-components`).
+**Built green:** `:core`, `:ui-components`, `:shared`, `:feature-main`, `:feature-filters`, `:feature-notifications`
+(each `assembleDebug` verified). Old `app/.../ui/theme/` boilerplate deleted (theme now lives in `:ui-components`).
+`:app` successfully wired with `@HiltAndroidApp`, `MainActivity`, Navigation Compose, and all feature modules.
 
-### ⏭️ IMMEDIATE NEXT STEP — finish wiring `:app` (in progress, NOT yet typed)
+**MVP Features Complete:**
+- ✅ **Filter Management** — Create/edit filters (`:feature-filters` with form validation)
+- ✅ **Navigation** — FAB in MainScreen → FilterCreationScreen (Jetpack Navigation Compose)
+- ✅ **Notification Listening** — `GmailNotificationListener` intercepts Gmail notifications + `CheckGmailFilter` matching
+- ✅ **Alarm Trigger** — `AlarmPlayer` plays sound + vibration on filter match
+- ✅ **Permission Detection** — `NotificationListenerStatusChecker` + banner on MainScreen prompts user to enable access
+
+### ⏭️ NEXT ROADMAP ITEMS
 `:app` currently will NOT compile: `MainActivity.kt` still imports the deleted
 `com.notisiren.ui.theme.NotiSirenTheme`. The following 4 changes were handed to the user but
 not yet typed. Re-deliver them (user types), then build `./gradlew :app:assembleDebug`:

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="filter_creation_title">Crear filtro</string>
+    <string name="filter_creation_back">Atrás</string>
+    <string name="filter_creation_name_label">Nombre del filtro</string>
+    <string name="filter_creation_sender_label">Remitente contiene (opcional)</string>
+    <string name="filter_creation_sender_hint">p. ej., jefe@empresa.com</string>
+    <string name="filter_creation_subject_label">Asunto contiene (opcional)</string>
+    <string name="filter_creation_subject_hint">p. ej., URGENTE</string>
+    <string name="filter_creation_save">Guardar filtro</string>
+</resources>

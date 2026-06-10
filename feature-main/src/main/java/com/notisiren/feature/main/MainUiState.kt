@@ -4,5 +4,6 @@ import com.notisiren.shared.domain.model.GmailFilter
 
 data class MainUiState(
     val filters: List<GmailFilter> = emptyList(),
-    val isLoading: Boolean = true
+    val isLoading: Boolean = true,
+    val isNotificationListenerEnabled: Boolean = true
 )

@@ -23,6 +23,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.notisiren.shared.domain.model.GmailFilter
+import android.content.Intent
+import android.provider.Settings
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.size
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.notisiren.feature.notifications.NotificationListenerBanner
+import com.notisiren.uicomponents.theme.NotiSirenTheme
 
 @Composable
 fun MainScreen(
@@ -39,6 +48,13 @@ fun MainContent(
     state: MainUiState,
     onAddFilter: () -> Unit
 ) {
+
+    val context = LocalContext.current
+
+
+
+
+
     Scaffold(
         topBar = {
             TopAppBar(title = { Text(stringResource(R.string.main_title))})
@@ -52,10 +68,25 @@ fun MainContent(
                 }
         }
     ) { innerPadding ->
+
+        Column(modifier = Modifier.fillMaxSize().padding(innerPadding)) {
+
+
+
+            if (!state.isNotificationListenerEnabled) {
+                NotificationListenerBanner(
+                    onDismiss = { /* optional: add state to dismiss */ },
+                    onEnable = {
+                        val intent = Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
+                        context.startActivity(intent)
+                    }
+                )
+            } else {
+
         when {
             state.isLoading -> {
                 Box(
-                    modifier = Modifier.fillMaxSize().padding(innerPadding),
+                    modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
                     CircularProgressIndicator()
@@ -63,20 +94,22 @@ fun MainContent(
             }
             state.filters.isEmpty() -> {
                 Box(
-                    modifier = Modifier.fillMaxSize().padding(innerPadding),
+                    modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(stringResource(R.string.main_empty))
                 }
             }
             else -> {
-                LazyColumn(modifier = Modifier.padding(innerPadding)) {
+                LazyColumn(modifier = Modifier) {
                     items(state.filters, key = { it.id }) { filter ->
                         FilterRow(filter)
                     }
                 }
-            }
+            }}
         }
+    }
+
     }
 }
 
@@ -89,4 +122,18 @@ private fun FilterRow(filter: GmailFilter) {
             Text(criteria.joinToString(" . "))
         }
     )
+}
+
+val uiState = MainUiState(
+    filters = emptyList(),
+    isLoading = false,
+    isNotificationListenerEnabled = false
+)
+
+@Preview(showBackground = true)
+@Composable
+fun MainContentPreview() {
+    NotiSirenTheme {
+        MainContent(uiState) { }
+    }
 }
