@@ -46,6 +46,7 @@ dependencies {
     implementation(project(":ui-components"))
     implementation(project(":feature-main"))
     implementation(project(":feature-filters"))
+    implementation(project(":feature-notifications"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)

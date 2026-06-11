@@ -10,21 +10,27 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import android.content.Context
-import com.notisiren.feature.notifications.NotificationListenerStatusChecker
+import com.notisiren.shared.domain.repository.NotificationAccessChecker
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.combine
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     getAllFilters: GetAllFilters,
-    private val statusChecker: NotificationListenerStatusChecker
-): ViewModel(){
+    private val notificationAccessChecker: NotificationAccessChecker
+) : ViewModel() {
     val uiState: StateFlow<MainUiState> =
-        getAllFilters()
-            .map {filters -> MainUiState(
-                filters= filters,
+        combine(
+            getAllFilters(),
+            notificationAccessChecker.isEnabled()
+        ) { filters, isListenerEnabled ->
+            MainUiState(
+                filters = filters,
                 isLoading = false,
-                isNotificationListenerEnabled = statusChecker.isNotificationListenerEnabled(context))}
+                isNotificationListenerEnabled = isListenerEnabled
+            )
+        }
             .stateIn(
                 scope = viewModelScope,
                 started = SharingStarted.WhileSubscribed(5_000),
